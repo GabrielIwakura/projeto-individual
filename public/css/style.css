@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family:"font-one-piece";
+    src: url(/font/one\ piece\ font.ttf) format("truetype");
+  }
 
 .container-navbar {
     background-color: #e88f14; 
@@ -123,10 +127,31 @@ body {
 }
 
 .banner-filtro span{
+    font-family: "font-one-piece";
     color: #d03939;
     font-weight: 1000;
     font-size: 500%;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     margin-top: 3%;
     margin-top: 4%;
+}
+
+.container-projeto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin-left: 5%;
+}
+
+.container-projeto-elementos {
+    width: 50%;
+}
+
+.titulo-projeto {
+    font-family: "font-one-piece";
+    font-size: 450%;
+}
+
+.principal-projeto {
 }

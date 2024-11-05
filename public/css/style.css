@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #e88f14;
 }
 
 @font-face {
@@ -109,6 +110,7 @@ body {
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    margin-top: -10vh;
 }
 
 .banner-filtro p{
@@ -116,7 +118,8 @@ body {
     background-color: #b87210;
     border: 3px solid black;
     width: 75%;
-    font-size: 30px;
+    font-size: 200%;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     color: aliceblue;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
     border-radius: 15px;
@@ -130,28 +133,107 @@ body {
     font-family: "font-one-piece";
     color: #d03939;
     font-weight: 1000;
-    font-size: 500%;
+    font-size: 700%;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     margin-top: 3%;
     margin-top: 4%;
+    text-shadow: 2px 2px black;
 }
 
 .container-projeto {
+    border-top: 2px solid black;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto;
-    margin-left: 5%;
+    height: 100%;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    background-image: url(../assets/imgs/luffy_background.jpg);
+    background-size:cover; 
+    background-repeat: no-repeat;
+    background-position: top center;
 }
 
 .container-projeto-elementos {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .titulo-projeto {
+    width: 60%;
     font-family: "font-one-piece";
-    font-size: 450%;
+    font-size: 800%;
+    text-align: center;
+    border-radius: 15px;
+    padding: 1%;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: #e88f14;
+    text-shadow: 2px 2px black;
 }
 
 .principal-projeto {
+    display: flex;
+    margin-top: 2%;
+    width: 75vw;
+    align-items: center;
+    background-color: #b87210;
+    font-size: 150%;
+    color: aliceblue;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 1%;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5); 
+    font-weight: 600;
+}
+
+.sobremim-projeto {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.sobremim-projeto p{
+    width: 62vw;
+    align-items: center;
+    background-color: #b87210;
+    font-size: 150%;
+    color: aliceblue;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 1%;
+    border-radius: 15px;
+    border: 2px solid black;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5); 
+    font-weight: 600;
+}
+
+.sobremim-projeto img {
+    border-radius: 100%;
+    border: 3px solid black;
+    width: 300px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20vh;
+    border-top: 3px solid black;
+    background-color: #e88f14;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-container {
+    align-items: center;
+}
+.footer span {
+    font-size: 150%;
+    font-weight: 600;
+    color: aliceblue;
 }

@@ -199,10 +199,11 @@ body {
 }
 
 .sobremim-projeto p{
-    width: 62vw;
+    display: flex;
+    width: 60%;
     align-items: center;
     background-color: #b87210;
-    font-size: 150%;
+    font-size: 160%;
     color: aliceblue;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding: 1%;

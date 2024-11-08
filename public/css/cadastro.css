@@ -1,14 +1,16 @@
-body, html {
-    height: 100%;
+body {
     margin: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    background-image: url('../assets/imgs/luffy-gif.gif');
+    height: 100vh;
+    background-image: url(../assets/imgs/luffy2.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #f0f2f5;
+    background-position: center 10vh;
 }
 
 @font-face {
@@ -73,7 +75,6 @@ body, html {
     z-index: 1000;
     border-radius: 15px;
     border: 2px solid black;
-
 }
 
 .navbar li {
@@ -99,115 +100,82 @@ body, html {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
-.alerta_erro {
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    height: 100vh;
+    width: 100%;
+    margin-top: 10vh; /* Para ajustar com a navbar fixa */
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
     width: 100%;
-    max-width: 400px;
 }
 
-.formulario .campo {
+.card-cadastro h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.campo {
     margin-bottom: 15px;
 }
 
-.formulario .campo span {
-    display: block;
+.campo span {
     font-weight: bold;
+    display: block;
+    font-size: 16px;
+    color: #333;
     margin-bottom: 5px;
 }
 
-.formulario .campo input {
+.campo input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
     font-size: 16px;
+}
+
+.campo input:focus {
+    border-color: #e88f14;
+    outline: none;
+    box-shadow: 0 0 5px rgba(232, 143, 20, 0.5);
 }
 
 .botao {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #e88f14;
-    color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
+    color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .botao:hover {
-    background-color: #cc7c12;
+    background-color: #c16d10;
 }
 
-.card_erro {
-    display: none;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+.alerta_erro {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
     text-align: center;
 }
 
 .loading-div {
-    display: none;
-    text-align: center;
-}
-
-.loading-div img {
-    width: 50px;
-    height: 50px;
-}
-
-.login-titulo{
-    color: #e88f14;
-    width: 40%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 800%;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    margin-top: -5%;
-    font-family: "font-one-piece";
-}
-
-.overlay {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.login {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    z-index: 2;
-    position: relative;
-}
-
-.card-login {
-    background-color: white;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 700px; 
-    margin-top: 20%;
+    margin-top: 15px;
 }

@@ -2,12 +2,12 @@ body {
     margin: 0;
     background-color: #b87210;
     overflow-x: hidden;
+    font-family: sans-serif;
 }
 
 @font-face {
     font-family: "font-one-piece";
-    src: url(/font/one\ piece\ font.ttf) format("truetype");
-}
+    src: url(/font/onepiece.ttf) format("truetype");}
 
 .container-navbar {
     background-color: #e88f14;
@@ -111,6 +111,7 @@ body {
     background-repeat: no-repeat;
     background-position: top center;
     background-position-y: -100px;
+    border-bottom: 2px solid black;
 }
 
 .banner-filtro {
@@ -141,4 +142,90 @@ body {
     font-size: 150%;
     font-weight: 600;
     color: aliceblue;
+}
+
+.container-teorias {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+
+.container-teorias img {
+    width: 35%;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+.container-teorias p {
+    width: 50%;
+    font-size: 25px;
+    font-weight: 500;
+    background-color: aliceblue;
+    padding: 1%;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+.teoria1 {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;
+    background-color: #d03939;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2%;
+}
+
+.teoria2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #39aad0;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2%;
+    height: 400px;
+}
+
+.teoria2 img {
+    width: 30%;
+}
+
+.teoria3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #cce131;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2%;
+}
+
+.teoria4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #d03939;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2%;
+}
+
+.teoria5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #39aad0;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2%;
 }

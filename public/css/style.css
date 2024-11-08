@@ -1,11 +1,12 @@
 body {
     margin: 0;
     background-color: #e88f14;
+    font-family: sans-serif;
 }
 
 @font-face {
     font-family:"font-one-piece";
-    src: url(/font/one\ piece\ font.ttf) format("truetype");
+    src: url(/font/onepiece.ttf) format("truetype");
   }
 
 .container-navbar {

@@ -2,7 +2,6 @@ body {
     margin: 0;
     font-family: sans-serif;
     overflow-x: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -106,20 +105,20 @@ body {
     align-items: center;
     height: 100vh;
     width: 100%;
-    margin-top: 10vh; /* Para ajustar com a navbar fixa */
+    margin-top: 10vh; 
 }
 
 .container {
     background-color: #fff;
     padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    max-width: 650px;
     width: 100%;
 }
 
 .card-cadastro h2 {
-    font-size: 28px;
+    font-size: 35px;
     text-align: center;
     color: #333;
     margin-bottom: 20px;
@@ -178,4 +177,36 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+}
+
+.alerta_erro .card_erro {
+    display: none;
+    background-color: aliceblue;
+    border-radius: 15px;
+    color: #e88f14;
+    border: 2px solid black;
+    padding: 2%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20vh;
+    border-top: 3px solid black;
+    background-color: #e88f14;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-container {
+    align-items: center;
+}
+.footer span {
+    font-size: 150%;
+    font-weight: 600;
+    color: aliceblue;
 }

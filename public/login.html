@@ -20,32 +20,32 @@
 
     <div class="header">
         <div class="container-navbar">
-          <div class="logo">
-            <a href="index.html">
-                <img src="./assets/imgs/one-piece-logo.png" alt="Logo">
-            </a>
-          </div>
-          <ul class="navbar">
-            <li>
-              <a href="#">Personagens</a>
-              <ul class="submenu">
-                <li><a href="personagens.html#principais">Principais</a></li>
-                <li><a href="personagens.html#viloes">Vilões</a></li>
-                <li><a href="personagens.html#aliados">Aliados</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="curiosidades.html">Curiosidades</a>
-            </li>
-            <li>
-              <a href="teorias.html">Teorias</a>
-            </li>
-            <li>
-              <a href="cadastro.html">Cadastro</a>
-            </li>
-          </ul>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/imgs/one-piece-logo.png" alt="Logo">
+                </a>
+            </div>
+            <ul class="navbar">
+                <li>
+                    <a href="#">Personagens</a>
+                    <ul class="submenu">
+                        <li><a href="personagens.html#principais">Principais</a></li>
+                        <li><a href="personagens.html#viloes">Vilões</a></li>
+                        <li><a href="personagens.html#aliados">Aliados</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="curiosidades.html">Curiosidades</a>
+                </li>
+                <li>
+                    <a href="teorias.html">Teorias</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
         </div>
-      </div>
+    </div>
 
 
     <div class="login">
@@ -79,9 +79,9 @@
     </div>
     <div class="footer">
         <div class="footer-container">
-          <span>Projeto Individual - SPTech 2024</span>
+            <span>Projeto Individual - SPTech 2024</span>
         </div>
-      </div>
+    </div>
 </body>
 
 </html>
@@ -129,12 +129,10 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
+                    console.log
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
+                        window.location = "./dashboard/dashboard.html";
+                    }, 1000);
                 });
 
             } else {

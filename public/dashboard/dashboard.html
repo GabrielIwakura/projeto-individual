@@ -24,14 +24,20 @@
 <body>
     <div class="janela">
         <div class="header-left">
+            <img src="../assets/imgs/iconesidebar.png" alt="">
             <h1>Mugiwara's Journal</h1>
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav">
-                <h3>Votação de Personagens</h3>
-            </div>
+            <ul class="lista-navegacao">
+                <span>
+                    <a href="./dashboard.html" class="nav1">Dashboard</a>
+                </span>    
+                <span>
+                    <a href="./cadastroPersonagem.html" class="nav2">Cadastrar Personagem</a>
+                </span>
+            </ul>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -41,14 +47,18 @@
         <div class="dash">
             <div id="alerta"></div>
 
-            <div class="votacao">
-                <h2>Vote no seu Personagem Favorito de One Piece</h2>
-                <div id="personagens" class="personagens-container">
+            <div class="conteudo-principal">
+                <div class="votacao">
+                    <h2>Vote no seu Personagem Favorito de One Piece</h2>
+                    <div id="personagens" class="personagens-container">
+                    </div>
+                    <h2>Personagem Mais Votado</h2>
+                    <div id="personagem-mais-votado" class="personagem-votado"></div>
                 </div>
-            </div>
-            <div class="bloco2">
-                <div class="grafico-barras">
-                    <canvas id="grafico-votos-personagem"></canvas>
+                <div class="bloco2">
+                    <div class="grafico-barras">
+                        <canvas id="grafico-votos-personagem"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -76,11 +86,36 @@
                 `;
             });
 
-            carregarVotos(); 
+            carregarVotos();
         } catch (error) {
             console.error('Erro ao carregar personagens:', error);
         }
     }
+
+    async function personagemMaisVotado() {
+        try {
+            const response = await fetch('/personagem/personagemMaisVotado');
+            const data = await response.json();
+
+            if (data && data.length > 0) {
+                const personagem = data[0];
+                const personagemMaisVotadoContainer = document.getElementById('personagem-mais-votado');
+
+                personagemMaisVotadoContainer.innerHTML = `
+                <div style="background-color: #FFD700; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; border: 2px solid black; margin-bottom: 5%; justify-content: center; width: 55%">
+                    <h3>${personagem.nome}</h3>
+                    <p style="font-size: 24px; color: black; font-weight:600">Votos: ${personagem.votos}</p>
+                </div>
+            `;
+            } else {
+                console.warn('Nenhum personagem encontrado como o mais votado.');
+            }
+        } catch (error) {
+            console.error('Erro ao carregar personagem mais votado:', error);
+        }
+    }
+
+
 
     async function votar(idPersonagem) {
         try {
@@ -98,7 +133,7 @@
                 const votosElement = document.getElementById(`votos-${idPersonagem}`);
                 votosElement.textContent = parseInt(votosElement.textContent) + 1;
 
-                carregarVotos(); 
+                carregarVotos();
             } else {
                 alert('Erro ao registrar voto: ' + resultado.mensagem);
             }
@@ -109,71 +144,72 @@
     }
 
     var graficoVotosPersonagem = new Chart(document.getElementById('grafico-votos-personagem'), {
-    type: 'bar',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'Votos dos Personagens',
-            backgroundColor: [],
-            borderColor: '#204417',
-            data: [],
-            borderWidth: 3
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Votos dos Personagens',
-                font: {
-                    size: 20
-                },
-                color: '#000',
-                padding: {
-                    top: 5,
-                    bottom: 5
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Votos dos Personagens',
+                backgroundColor: [],
+                borderColor: '#204417',
+                data: [],
+                borderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Votos dos Personagens',
+                    font: {
+                        size: 20
+                    },
+                    color: '#000',
+                    padding: {
+                        top: 5,
+                        bottom: 5
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
                 }
             }
-        },
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+        }
+    });
+
+    async function carregarVotos() {
+        try {
+            const response = await fetch('/personagem/listarComVotos');
+            const data = await response.json();
+
+            const nomes = data.map(personagem => personagem.nome);
+            const votos = data.map(personagem => personagem.votos || 0);
+
+
+            const cores = [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56',
+                '#4BC0C0',
+                '#9966FF',
+                '#FF9F40',
+            ];
+
+            graficoVotosPersonagem.data.labels = nomes;
+            graficoVotosPersonagem.data.datasets[0].data = votos;
+            graficoVotosPersonagem.data.datasets[0].backgroundColor = cores.slice(0, votos.length);
+            graficoVotosPersonagem.update();
+        } catch (error) {
+            console.error('Erro ao carregar votos:', error);
         }
     }
-});
-
-async function carregarVotos() {
-    try {
-        const response = await fetch('/personagem/listarComVotos');
-        const data = await response.json();
-
-        const nomes = data.map(personagem => personagem.nome);
-        const votos = data.map(personagem => personagem.votos || 0);
-
-        
-        const cores = [
-            '#FF6384', 
-            '#36A2EB',
-            '#FFCE56', 
-            '#4BC0C0', 
-            '#9966FF',
-            '#FF9F40', 
-        ];
-
-        graficoVotosPersonagem.data.labels = nomes;
-        graficoVotosPersonagem.data.datasets[0].data = votos;
-        graficoVotosPersonagem.data.datasets[0].backgroundColor = cores.slice(0, votos.length);
-        graficoVotosPersonagem.update();
-    } catch (error) {
-        console.error('Erro ao carregar votos:', error);
-    }
-}
 
     document.addEventListener('DOMContentLoaded', function () {
         carregarPersonagens();
+        personagemMaisVotado();
     });
 </script>
 

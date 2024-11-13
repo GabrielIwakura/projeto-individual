@@ -20,6 +20,11 @@ function buscarPorNome(nome) {
   return database.executar(instrucaoSql);
 }
 
+function personagemComMaisVotos() {
+  var instrucaoSql = `select nome, MAX(qtdVotos) as votos from personagem GROUP BY nome HAVING MAX(qtdVotos) ORDER BY MAX(qtdVotos) DESC LIMIT 1`;
+  return database.executar(instrucaoSql);
+}
+
 function listarComVotos() {
   var instrucaoSql = `SELECT idPersonagem, nome, descricao, qtdVotos AS votos FROM personagem`;
   return database.executar(instrucaoSql);
@@ -37,4 +42,5 @@ module.exports = {
   buscarPorNome,
   listarComVotos,
   atualizarQtdVotos,
+  personagemComMaisVotos,
 };

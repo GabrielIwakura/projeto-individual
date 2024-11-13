@@ -8,6 +8,11 @@ body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@font-face {
+  font-family: "font-one-piece";
+  src: url(/font/onepiece.ttf) format("truetype");
+}
+
 .label-captura {
   display: flex;
   justify-content: center;
@@ -336,6 +341,10 @@ canvas {
   color: white;
 }
 
+.header-left img {
+  width: 45%;
+}
+
 .header-left {
   position: fixed;
   top: 0;
@@ -347,8 +356,9 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  border-right: 3px solid black;
+  background: rgb(151, 18, 18);
+  background: linear-gradient(90deg, rgba(151, 18, 18, 1) 0%, rgba(184, 114, 16, 1) 35%, rgba(151, 18, 18, 1) 100%);
 }
 
 .dash-right {
@@ -364,7 +374,9 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: aliceblue;
+  font-size: 32px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .hello {
@@ -374,7 +386,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: aliceblue;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -417,13 +429,19 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
-  color: white;
+  background-color: #b87210;
+  color: black;
+  box-shadow: 2px 2px 2px black;
   border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+.btn-logout:hover {
+  color: aliceblue;
+  background-color: #694109;
 }
 
 .personagem-card button {
@@ -438,9 +456,139 @@ canvas {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.personagem-card h3 {
+  color: aliceblue;
+  font-size: 40px;
+  font-weight: 1000;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .personagem-card button:hover {
   background-color: #ffcc00;
   color: #333;
-  transform: scale(1.05); 
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.votacao h2 {
+  color: aliceblue;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 34px;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #f0b90b;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+}
+
+.personagem-votado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lista-navegacao {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  justify-content: center;
+}
+
+.lista-navegacao span{
+  margin-bottom: 10%;
+  font-weight: 600;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.nav1:hover {
+  text-decoration: underline;
+}
+
+.nav2:hover {
+  text-decoration: underline;
+}
+
+.personagem-cadastro {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  width: 40%;
+  background-color: #b87210;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Exo 2', sans-serif;
+  border: 2px solid black;
+}
+
+.personagem-cadastro label {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: aliceblue;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  display: block;
+}
+
+.personagem-cadastro input[type="text"],
+.personagem-cadastro textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 100%;
+}
+
+.personagem-cadastro button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #f0b90b;
+  color: #fff;
+  font-size: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.personagem-cadastro button:hover {
+  background-color: #694109;
+  color: aliceblue;
+  transform: scale(1.01);
+}
+
+.mensagem {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 100%;
+}
+
+.dash h1 {
+  color: aliceblue;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 34px;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #f0b90b;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }

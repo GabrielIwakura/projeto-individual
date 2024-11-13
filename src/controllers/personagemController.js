@@ -75,10 +75,21 @@ function listarComVotos(req, res) {
     });
 }
 
+function personagemComMaisVotos(req, res) {
+  personagemModel.personagemComMaisVotos()
+    .then((resultado) => {
+      res.status(200).json(resultado);
+    })
+    .catch((erro) => {
+      res.status(500).json({ mensagem: "Erro ao buscar personagem com mais votos", erro });
+    });
+}
+
 function votar(req, res) {
   var idPersonagem = req.body.idPersonagem;
 
   personagemModel.atualizarQtdVotos(idPersonagem)
+  
     .then((resultado) => {
       res.status(200).json({ mensagem: 'Voto registrado com sucesso', resultado });
     })
@@ -94,4 +105,5 @@ module.exports = {
   listar,
   listarComVotos,
   votar,
+  personagemComMaisVotos,
 };

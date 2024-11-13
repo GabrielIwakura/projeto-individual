@@ -27,6 +27,10 @@ router.get("/listarComVotos", function (req, res) {
   personagemController.listarComVotos(req, res);
 });
 
+router.get("/personagemMaisVotado", function (req, res) {
+  personagemController.personagemComMaisVotos(req, res);
+});
+
 
 
 module.exports = router;

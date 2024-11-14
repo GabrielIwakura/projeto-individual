@@ -21,6 +21,8 @@
     var medidasRouter = require("./src/routes/medidas");
     var aquariosRouter = require("./src/routes/aquarios");
     var personagemsRouter = require("./src/routes/personagem");
+    var bandoRouter = require("./src/routes/bando");
+
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
@@ -34,6 +36,7 @@
     app.use("/medidas", medidasRouter);
     app.use("/aquarios", aquariosRouter);
     app.use("/personagem", personagemsRouter);
+    app.use("/bando", bandoRouter)
 
     app.listen(PORTA_APP, function () {
         console.log(`

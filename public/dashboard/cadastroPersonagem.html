@@ -31,7 +31,7 @@
             <ul class="lista-navegacao">
                 <span>
                     <a href="./dashboard.html" class="nav1">Dashboard</a>
-                </span>    
+                </span>
                 <span>
                     <a href="./cadastroPersonagem.html" class="nav2">Cadastrar Personagem</a>
                 </span>
@@ -44,6 +44,17 @@
 
         <div class="dash">
             <div id="alerta"></div>
+            <h1>Cadastre o bando de seu personagem:</h1>
+            <div id="cadastroPersonagem" class="personagem-cadastro">
+                <form id="formCadastroBando">
+                    <label for="nomeBando">Nome do Bando:</label>
+                    <input type="text" id="nomeBando" name="nomeBando" required>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
+                <div id="mensagem" class="mensagem"></div>
+            </div>
+
 
             <h1>Cadastre seu personagem favorito de One Piece:</h1>
             <div id="cadastroPersonagem" class="personagem-cadastro">
@@ -54,47 +65,102 @@
                     <label for="descricao">Descrição:</label>
                     <textarea id="descricao" name="descricao" required></textarea>
 
+                    <label for="bando">Bando:</label>
+                    <select name="bando" id="bando"></select>
+
                     <button type="submit">Cadastrar</button>
                 </form>
-                <div id="mensagem" class="mensagem"></div>
+                <div id="mensagem2" class="mensagem2"></div>
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('b_usuario').innerHTML = sessionStorage.NOME_USUARIO;
-
-        document.getElementById('formCadastroPersonagem').addEventListener('submit', async function (event) {
-            event.preventDefault(); 
-
-            const nome = document.getElementById('nome').value;
-            const descricao = document.getElementById('descricao').value;
-
-            try {
-                const response = await fetch('/personagem/cadastrar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ nome, descricao })
-                });
-
-                const mensagemEl = document.getElementById('mensagem');
-                if (response.ok) {
-                    mensagemEl.textContent = 'Personagem cadastrado com sucesso!';
-                    mensagemEl.style.color = 'green';
-                    document.getElementById('formCadastroPersonagem').reset();
-                } else {
-                    const data = await response.json();
-                    mensagemEl.textContent = data.mensagem || 'Erro ao cadastrar personagem.';
-                    mensagemEl.style.color = 'red';
-                }
-            } catch (error) {
-                console.error('Erro ao cadastrar personagem:', error);
-                document.getElementById('mensagem').textContent = 'Erro na conexão com o servidor.';
-            }
-        });
-    </script>
 </body>
+<script>
+    document.getElementById('b_usuario').innerHTML = sessionStorage.NOME_USUARIO;
 
-</html>
+    document.getElementById('formCadastroPersonagem').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const descricao = document.getElementById('descricao').value;
+        const fkBando = document.getElementById('bando').value;
+
+        try {
+            const response = await fetch('/personagem/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, descricao, fkBando })
+            });
+
+            const mensagemEl = document.getElementById('mensagem2');
+            if (response.ok) {
+                mensagemEl.textContent = 'Personagem cadastrado com sucesso!';
+                mensagemEl.style.color = 'green';
+                document.getElementById('formCadastroPersonagem').reset();
+            } else {
+                const data = await response.json();
+                mensagemEl.textContent = data.mensagem || 'Erro ao cadastrar personagem.';
+                mensagemEl.style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar personagem:', error);
+            document.getElementById('mensagem2').textContent = 'Erro na conexão com o servidor.';
+        }
+    });
+
+
+    document.getElementById('formCadastroBando').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const nome = document.getElementById('nomeBando').value;
+
+        try {
+            const response = await fetch('/bando/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome })
+            });
+
+            const mensagemEl = document.getElementById('mensagem');
+            if (response.ok) {
+                mensagemEl.textContent = 'Bando cadastrado com sucesso!';
+                mensagemEl.style.color = 'green';
+                document.getElementById('formCadastroPersonagem').reset();
+            } else {
+                const data = await response.json();
+                mensagemEl.textContent = data.mensagem || 'Erro ao cadastrar bando.';
+                mensagemEl.style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar personagem:', error);
+            document.getElementById('mensagem').textContent = 'Erro na conexão com o servidor.';
+        }
+    });
+
+    async function carregarBandos() {
+        try {
+            const response = await fetch('/bando/listar');
+            const bandos = await response.json();
+
+            const selectBando = document.getElementById('bando');
+            selectBando.innerHTML = '<option value="">Selecione um bando</option>';
+
+            bandos.forEach(bando => {
+                const option = document.createElement('option');
+                option.value = bando.idBando;
+                option.textContent = bando.nome;
+                selectBando.appendChild(option);
+            });
+        } catch (error) {
+            console.error('Erro ao carregar bandos:', error);
+            document.getElementById('mensagem').textContent = 'Erro ao carregar lista de bandos.';
+        }
+    }
+
+    carregarBandos();
+
+</script>

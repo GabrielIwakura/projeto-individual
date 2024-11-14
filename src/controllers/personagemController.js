@@ -45,13 +45,14 @@ function buscarPorNome(req, res) {
 function cadastrar(req, res) {
   var nome = req.body.nome;
   var descricao = req.body.descricao;
+  var bando = req.body.fkBando
 
   personagemModel.buscarPorNome(nome)
     .then((resultado) => {
       if (resultado.length > 0) {
         res.status(401).json({ mensagem: `O personagem ${nome} já existe` });
       } else {
-        personagemModel.cadastrar(nome, descricao)
+        personagemModel.cadastrar(nome, descricao, bando)
           .then((resultado) => {
             res.status(201).json(resultado);
           })

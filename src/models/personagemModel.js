@@ -6,12 +6,12 @@ function buscarPorId(id) {
 }
 
 function listar() {
-  var instrucaoSql = `SELECT idPersonagem, nome, descricao, qtdVotos FROM personagem`;
+  var instrucaoSql = `SELECT idPersonagem, personagem.nome as nomePersonagem, descricao, qtdVotos, bando.nome as nomeBando FROM personagem JOIN bando on personagem.fkBando = bando.idBando`;
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(nome, descricao) {
-  var instrucaoSql = `INSERT INTO personagem (nome, descricao) VALUES ('${nome}', '${descricao}')`;
+function cadastrar(nome, descricao, fkBando) {
+  var instrucaoSql = `INSERT INTO personagem (nome, descricao, fkBando) VALUES ('${nome}', '${descricao}', ${fkBando})`;
   return database.executar(instrucaoSql);
 }
 

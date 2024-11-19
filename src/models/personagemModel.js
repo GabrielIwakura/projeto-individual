@@ -25,6 +25,11 @@ function personagemComMaisVotos() {
   return database.executar(instrucaoSql);
 }
 
+function porcentagemMaisVotos() {
+  var instrucaoSql = `SELECT nome, ROUND((qtdVotos / (SELECT SUM(qtdVotos) FROM personagem) * 100),2) AS porcentagem FROM personagem WHERE qtdVotos = (SELECT MAX(qtdVotos) FROM personagem);`
+  return database.executar(instrucaoSql)
+}
+
 function listarComVotos() {
   var instrucaoSql = `SELECT idPersonagem, nome, descricao, qtdVotos AS votos FROM personagem`;
   return database.executar(instrucaoSql);
@@ -43,4 +48,5 @@ module.exports = {
   listarComVotos,
   atualizarQtdVotos,
   personagemComMaisVotos,
+  porcentagemMaisVotos,
 };

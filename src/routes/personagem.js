@@ -31,6 +31,10 @@ router.get("/personagemMaisVotado", function (req, res) {
   personagemController.personagemComMaisVotos(req, res);
 });
 
+router.get("/porcentagemMaisVotos", function (req, res) {
+  personagemController.porcentagemMaisVotos(req, res);
+});
+
 
 
 module.exports = router;

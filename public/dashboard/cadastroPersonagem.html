@@ -130,6 +130,7 @@
                 mensagemEl.textContent = 'Bando cadastrado com sucesso!';
                 mensagemEl.style.color = 'green';
                 document.getElementById('formCadastroPersonagem').reset();
+                carregarBandos()
             } else {
                 const data = await response.json();
                 mensagemEl.textContent = data.mensagem || 'Erro ao cadastrar bando.';

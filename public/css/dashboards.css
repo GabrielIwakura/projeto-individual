@@ -497,6 +497,14 @@ canvas {
   align-items: center;
 }
 
+.percentual-votado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
 .lista-navegacao {
   display: flex;
   flex-direction: column;

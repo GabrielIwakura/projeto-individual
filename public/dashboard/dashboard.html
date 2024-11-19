@@ -52,8 +52,10 @@
                     <h2>Vote no seu Personagem Favorito de One Piece</h2>
                     <div id="personagens" class="personagens-container">
                     </div>
-                    <h2>Personagem Mais Votado</h2>
+                    <h2>Personagem mais votado</h2>
                     <div id="personagem-mais-votado" class="personagem-votado"></div>
+                    <h2>Percentual do personagem mais votado</h2>
+                    <div id="percentual-maisVotado" class="percentual-votado"></div>
                 </div>
                 <div class="bloco2">
                     <div class="grafico-barras">
@@ -109,6 +111,30 @@
                     <p style="font-size: 24px; color: black; font-weight:600">Votos: ${personagem.votos}</p>
                 </div>
             `;
+                maisVotado = personagem.votos;
+            } else {
+                console.warn('Nenhum personagem encontrado como o mais votado.');
+            }
+        } catch (error) {
+            console.error('Erro ao carregar personagem mais votado:', error);
+        }
+    }
+
+    async function porcentagemMaisVotos() {
+        try {
+            const response = await fetch('/personagem/porcentagemMaisVotos');
+            const data = await response.json();
+
+            if (data && data.length > 0) {
+                const personagem = data[0];
+                const porcentagemMaisVotosContainer = document.getElementById('percentual-maisVotado');
+
+                porcentagemMaisVotosContainer.innerHTML = `
+                <div style="background-color: #FFD700; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; border: 2px solid black; margin-bottom: 5%; justify-content: center; width: 55%">
+                    <h3>${personagem.nome}</h3>
+                    <p style="font-size: 24px; color: black; font-weight:600">Percentual de voto: ${personagem.porcentagem}%</p>
+                </div>
+            `;
             } else {
                 console.warn('Nenhum personagem encontrado como o mais votado.');
             }
@@ -136,6 +162,8 @@
                 votosElement.textContent = parseInt(votosElement.textContent) + 1;
 
                 carregarVotos();
+                porcentagemMaisVotos();
+                personagemMaisVotado();
             } else {
                 alert('Erro ao registrar voto: ' + resultado.mensagem);
             }
@@ -208,10 +236,10 @@
             console.error('Erro ao carregar votos:', error);
         }
     }
-
     document.addEventListener('DOMContentLoaded', function () {
         carregarPersonagens();
         personagemMaisVotado();
+        porcentagemMaisVotos();
     });
 </script>
 

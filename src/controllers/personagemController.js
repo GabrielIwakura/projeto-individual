@@ -76,6 +76,16 @@ function listarComVotos(req, res) {
     });
 }
 
+function porcentagemMaisVotos(req, res) {
+  personagemModel.porcentagemMaisVotos()
+    .then((resultado) => {
+      res.status(200).json(resultado);
+    })
+    .catch((erro) => {
+      res.status(500).json({ mensagem: "Erro ao buscar porcentagem do mais votado", erro });
+    });
+}
+
 function personagemComMaisVotos(req, res) {
   personagemModel.personagemComMaisVotos()
     .then((resultado) => {
@@ -107,4 +117,5 @@ module.exports = {
   listarComVotos,
   votar,
   personagemComMaisVotos,
+  porcentagemMaisVotos,
 };

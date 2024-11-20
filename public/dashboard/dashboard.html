@@ -21,7 +21,7 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="janela">
         <div class="header-left">
             <img src="../assets/imgs/iconesidebar.png" alt="">
@@ -52,10 +52,17 @@
                     <h2>Vote no seu Personagem Favorito de One Piece</h2>
                     <div id="personagens" class="personagens-container">
                     </div>
-                    <h2>Personagem mais votado</h2>
-                    <div id="personagem-mais-votado" class="personagem-votado"></div>
-                    <h2>Percentual do personagem mais votado</h2>
-                    <div id="percentual-maisVotado" class="percentual-votado"></div>
+                </div>
+                <div class="kpi-personagem">
+                    <div class="kpi1">
+                        <h2>Personagem mais votado</h2>
+                        <div id="personagem-mais-votado" class="personagem-votado personagemkpi"></div>
+                    </div>
+                    <div class="kpi2">
+
+                        <h2>Percentual do personagem mais votado</h2>
+                        <div id="percentual-maisVotado" class="percentual-votado personagemkpi"></div>
+                    </div>
                 </div>
                 <div class="bloco2">
                     <div class="grafico-barras">
@@ -63,7 +70,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
@@ -108,10 +114,9 @@
                 personagemMaisVotadoContainer.innerHTML = `
                 <div style="background-color: #FFD700; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; border: 2px solid black; margin-bottom: 5%; justify-content: center; width: 55%">
                     <h3>${personagem.nome}</h3>
-                    <p style="font-size: 24px; color: black; font-weight:600">Votos: ${personagem.votos}</p>
+                    <p style="font-size: 24px; color: black; font-weight:600">Votos:<span> ${personagem.votos}</span></p>
                 </div>
             `;
-                maisVotado = personagem.votos;
             } else {
                 console.warn('Nenhum personagem encontrado como o mais votado.');
             }
@@ -132,7 +137,7 @@
                 porcentagemMaisVotosContainer.innerHTML = `
                 <div style="background-color: #FFD700; padding: 10px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; border: 2px solid black; margin-bottom: 5%; justify-content: center; width: 55%">
                     <h3>${personagem.nome}</h3>
-                    <p style="font-size: 24px; color: black; font-weight:600">Percentual de voto: ${personagem.porcentagem}%</p>
+                    <p style="font-size: 24px; color: black; font-weight:600">Percentual de voto: <span> ${personagem.porcentagem}%</span></p>
                 </div>
             `;
             } else {
@@ -180,9 +185,9 @@
             datasets: [{
                 label: 'Votos dos Personagens',
                 backgroundColor: [],
-                borderColor: '#204417',
+                borderColor: 'black',
                 data: [],
-                borderWidth: 3
+                borderWidth: 2,
             }]
         },
         options: {
@@ -193,14 +198,14 @@
                     display: true,
                     text: 'Votos dos Personagens',
                     font: {
-                        size: 20
+                        size: 46
                     },
-                    color: '#000',
+                    color: 'black',
                     padding: {
                         top: 5,
-                        bottom: 5
+                        bottom: 10
                     }
-                }
+                },
             },
             scales: {
                 y: {
@@ -209,6 +214,8 @@
             }
         }
     });
+    Chart.defaults.font.size = 22;
+    Chart.defaults.color = 'black';
 
     async function carregarVotos() {
         try {
